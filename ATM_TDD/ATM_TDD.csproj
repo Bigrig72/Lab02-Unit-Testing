@@ -12,4 +12,8 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lab02-Unit-Testing\Lab02-Unit-Testing.csproj" />
+  </ItemGroup>
+
 </Project>
