@@ -14,7 +14,7 @@ namespace Lab02_Unit_Testing
             while (menu)
             {
 
-               
+                Console.Clear();
                 Console.WriteLine("Welcome to the bank of Regan Dufort");
                 Console.WriteLine("This is an ATM where you can manage and update your account");
                 Console.WriteLine("Choose an option for your bank account");
