@@ -2,53 +2,109 @@
 
 namespace Lab02_Unit_Testing
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+
+
+        public static void Main(string[] args)
         {
-            bool displayAtm = true;
-            while (displayAtm)
+            uint balance = 5000;
+
+            bool menu = true;
+            while (menu)
             {
-                displayAtm = DisplayAtm();
+
+               
+                Console.WriteLine("Welcome to the bank of Regan Dufort");
+                Console.WriteLine("This is an ATM where you can manage and update your account");
+                Console.WriteLine("Choose an option for your bank account");
+                Console.WriteLine("1) Choose to view your total balance");
+                Console.WriteLine("2) Choose to add to money to your balance");
+                Console.WriteLine("3) Choose to subtract money from your balance");
+                Console.WriteLine("4) Choose to exit");
+
+                string result = Console.ReadLine();
+
+                try
+                {
+
+
+                    if (result == "1")
+                    {
+                        Console.WriteLine($"Your total balance is {balance}");
+                        Console.ReadLine();
+
+                    }
+                    else if (result == "2")
+                    {
+                        Console.WriteLine("Input a number you wish to add");
+                        uint addNum = Convert.ToUInt32(Console.ReadLine());
+                        balance = AddToBalance(balance, addNum);
+                          
+
+                    }
+                    else if (result == "3")
+                    {
+                        Console.WriteLine("Enter a number you wish to withdrawl from your account");
+                        uint subtractNum = Convert.ToUInt32(Console.ReadLine());
+
+                        if (subtractNum > balance)
+                        {
+                           
+                            Console.WriteLine("Whoops you cannot withdraw that much money");
+                            Console.ReadLine();
+
+                        }
+                        else
+                        {
+                            balance = SubtractFromBalance(balance, subtractNum);
+                        }
+
+                    
+                      
+                    }
+                    else if(result =="4")
+                    {
+                        menu = false;
+                    }
+
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+             
+
+
             }
-          
+
+
+
         }
-        private static bool DisplayAtm()
+        
+       
+        public static uint AddToBalance(uint balance, uint num)
+
         {
-            Console.Clear();
-            Console.WriteLine("Welcome to the bank of Regan Dufort");
-            Console.Write("This is an ATM where you can manage and update your account");
-            Console.WriteLine("Choose an option for your bank account");
-            Console.WriteLine("1) Choose to view your total balance");
-            Console.WriteLine("2) Choose to add to money to your balance");
-            Console.WriteLine("3) Choose to subtract money from your balance");
-            Console.WriteLine("4) Choose to exit");
 
-            string result = Console.ReadLine();
+            uint totalToAdd = balance + num;
+            Console.WriteLine($"Your total balance is now: {totalToAdd}");
+            
 
-            if (result == "1")
-            {
-                TotalBalance();
-                return true;
-            }
-            else if (result == "2")
-            {
-                addToBalance();
-                return true;
-           
-            }
-            else if (result == "3")
-            {
-                SubtractFromBalance();
-                return true;
-
-            }
-            else
-            {
-                return true;
-            }
-
+            return totalToAdd;
+      
         }
+        public static uint SubtractFromBalance(uint balance, uint num)
+
+        {
+
+            uint totalToSubtract = balance - num;
+            Console.WriteLine($"Your total balance is now: {totalToSubtract}");
+            
+            return totalToSubtract;
+        }
+
 
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using Xunit;
+using Lab02_Unit_Testing;
 
 namespace ATM_TDD
 {
@@ -8,7 +9,8 @@ namespace ATM_TDD
         [Fact]
         public void Test1()
         {
-
+            string balance = Program.AddToBalance(5000, 50).ToString();
+            Assert.Equal(5050.ToString(), balance);
         }
     }
 }
